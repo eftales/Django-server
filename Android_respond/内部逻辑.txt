@@ -1,0 +1,15 @@
+注册逻辑：
+从Android_needs得到用户名、密码、ip，通过save()将数据存入数据库
+
+登录逻辑：从Android_needs得到用户名与密码，
+
+返回json格式的friend，group信息，以及未登录的这段时间，有谁给他发过信息
+
+p2p逻辑：
+从Android_needs得到用户名，在数据库中找，找到ip，以json格式返回；若找不到，则把对应的人的缓存区写上来自谁、时间、message
+
+群消息缓存逻辑：
+	从Android_needs得到组号以及发送者以及时间，写入group数据库
+	
+群消息发送逻辑：
+	从Android_needs得到组号以及发送时间，返回group中的数据

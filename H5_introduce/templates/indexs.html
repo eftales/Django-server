@@ -1,0 +1,20 @@
+﻿{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <title> Game for example </title>
+        <link href={% static 'css/main.css' %} rel="stylesheet" type="text/css" />
+        <script src={% static 'javascript/jquery-1.5.2.min.js' %}></script>
+        <script src={% static 'javascript/script.js' %}></script>
+    </head>
+    <body>
+        <header>
+            <h2>Game for example</h2>
+        </header>
+
+        <div class="container">
+            <canvas id="scene" width="800" height="600"></canvas>
+        </div>
+    </body>
+</html>

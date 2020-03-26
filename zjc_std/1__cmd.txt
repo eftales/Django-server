@@ -1,0 +1,5 @@
+runserver 创建服务器
+migrate 同步数据库
+createsuperuser	创建超级账户
+
+help

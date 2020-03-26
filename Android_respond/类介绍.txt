@@ -1,0 +1,6 @@
+user:
+账号 密码 ip 好友 组号 friends消息缓存区
+user_name user_password user_IP user_friends user_groups user_message_cache
+group:
+成员 组名 群消息
+group_mate group_name group_message

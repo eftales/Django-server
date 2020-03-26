@@ -1,0 +1,688 @@
+﻿{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"  />
+<title>色环电阻计算器</title>
+
+<meta name="viewpoint" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=0"/>
+<script type="text/javascript" src={% static 'javascript/jquery-3.3.1.min.js' %}></script>
+<script>
+ 
+    digit41 = 0;
+	digit42 = 0;
+	digit43 = 0;
+	digit44 = '± 5%';
+
+
+function calcRes4(d1, d2, d3) {
+      var ohms = 0
+      var i = 0
+      multiplier = 1
+	  
+	  if(d3 < 0){
+		  d3 = Math.abs(d3)
+		  for (i = 0; i < d3; ++i)
+            multiplier *= 0.1
+		  }
+	  else{
+		   for (i = 0; i < d3; ++i)
+            multiplier *= 10
+		  }
+	var ohms = ((d1 * 10) + d2) * multiplier
+    ohms = ohms.toFixed(2)
+	ohms = format4(ohms)
+	return ohms
+}
+
+function format4(ohmval) {
+	var result = ""
+	if (ohmval > 10e6) {
+		ohmval /= 10e5
+		result = "  " + ohmval + " MΩ"
+		return result
+	} 
+      else {
+	      if (ohmval > 10e3) {
+		      ohmval /= 10e2
+		      result = "  " + ohmval + " KΩ"
+		      return result
+            }
+            else {
+			result = "  " + ohmval + " Ω"
+			return result
+	      }
+	}
+}
+
+
+function computeform4(form) {
+      form.resval.value = calcRes4(digit41, digit42, digit43)
+      form.tolval.value = digit44
+      return 0
+}
+
+function clearform4(form)
+{
+    digit41 = 0
+    digit42 = 0
+    digit43 = 0
+    digit44 = "± 5%"
+
+    form.resval.value = ""
+    form.tolval.value = "" 
+}
+ 
+ 	
+	digit51 = 0;
+	digit52 = 0;
+	digit53 = 0;
+	digit54 = 0;
+	digit55 = '± 5%';
+
+
+
+
+function calcRes5(d1, d2, d3,d4) {
+      var ohms = 0
+      var i = 0
+      multiplier = 1
+	  
+	  if(d4 < 0){
+		  d4 = Math.abs(d4)
+		  for (i = 0; i < d4; ++i)
+            multiplier *= 0.1
+		  }
+	  else{
+		   for (i = 0; i < d4; ++i)
+            multiplier *= 10
+		  }
+
+	var ohms = ((d1 * 100) + (d2 * 10) + d3) * multiplier
+    ohms = ohms.toFixed(2)
+	ohms = format5(ohms)
+	
+	return ohms
+}
+
+function format5(ohmval) {
+	var result = ""
+	if (ohmval > 10e6) {
+		ohmval /= 10e5
+		result = "  " + ohmval + " MΩ"
+		return result
+	} 
+      else {
+	      if (ohmval > 10e3) {
+		      ohmval /= 10e2
+		      result = "  " + ohmval + " KΩ"
+		      return result
+            }
+            else {
+			result = "  " + ohmval + " Ω"
+			return result
+	      }
+	}
+}
+
+
+function computeform5(form) {
+      form.resval.value = calcRes5(digit51, digit52, digit53, digit54)
+      form.tolval.value = digit55
+      return 0
+}
+
+function clearform5(form)
+{
+    digit51 = 0
+    digit52 = 0
+    digit53 = 0
+	digit54 = 0
+    digit55 = "± 5%"
+
+    form.resval.value = ""
+    form.tolval.value = "" 
+}
+</script>
+
+<script>
+$(document).ready(function() {
+    var temp = "none";
+
+    $("#sshdzjsq").click(function () {
+        openMatter(1);
+    });
+    $("#wshdzjsq").click(function () {
+        openMatter(2);
+    });
+	  function openMatter(obj) {
+        for (var i = 1; i < 3; i++) {
+            if (i == obj) {
+                temp = "block";
+            } else {
+                temp = "none";
+            }
+            document.getElementById("shdz" + i).style.display = temp;
+        }
+    }
+});
+</script>
+
+<style type="text/css">
+<!--
+body {margin:0 auto;text-align:left;padding:0;font-size:12px;line-height:22px;}
+p,form,input,div,h2,h3,h1,ul,li,img{margin:0;padding:0;}
+p {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+	text-align:left;line-height:22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#00C9FC">
+<header style="width: 60%;height: 40px;display:block;background-color:rgba(36,152,236,1.00);box-shadow: 0 -1px 2px #111111;position:relative;z-index:100; margin-bottom:120px; border-radius:5px; left:20%">
+<h1 style="position:absolute;font-size:17px;font-weight:600;width:600px;color:rgba(255,255,255,1.00);left:15%;display:block;line-height:17px;margin-top:12px;">欢迎使用色环电阻计算器</h1>
+<div style=" color:#FFFFFF; text-align:right; right:0; width:300px; float:right; height:41px; line-height:38px; right:13%; position:absolute">
+<h2 id="sshdzjsq" style="display:inline-block; font-size:14px;  font-weight:500; width:105px; text-align:center;height:43px; border-radius:3px" onmouseover="this.style.cssText='background-color:#00c9fa;display:inline-block; font-size:14px;  font-weight:500; width:105px; text-align:center;height:43px; border-radius:3px'" onmouseout="this.style.cssText='background-color:rgba(36,152,236,1.00);display:inline-block; font-size:14px;  font-weight:500; width:105px; text-align:center;height:40px; border-radius:3px'">四色环电阻</h2>
+<h3 id="wshdzjsq" style="display:inline-block; font-size:14px;  font-weight:500; width:105px; text-align:center;height:43px; border-radius:3px" onmouseover="this.style.cssText='background-color:#00c9fa;display:inline-block; font-size:14px;  font-weight:500; width:105px; text-align:center;height:43px; border-radius:3px'" onmouseout="this.style.cssText='background-color:rgba(36,152,236,1.00);display:inline-block; font-size:14px;  font-weight:500; width:105px; text-align:center;height:40px; border-radius:3px'">五色环电阻</h3>
+</div>
+</header>
+<div class="box" style="width:600px;margin:0 auto;text-align:center;">
+
+<div id="shdz1" >
+<form method="post">
+					<div align="center">
+					<center>
+					<table bordercolor="#fff" cellSpacing="10" border="1">
+					  <tbody>
+					  <tr>
+						<td>
+						  <table cellpadding="10" border="2" bordercolor="#FFFFFF">
+							<tbody>
+							<tr>
+							  <td>
+								<div align="center"><font color="#fff" size="2">第一节</font></div></td>
+							  <td>
+								<div align="center"><font color="#fff" size="2">第二节</font></div></td>
+							  <td>
+								<div align="center"><font color="#fff" size="2">第三节</font></div></td>
+							  <td>
+								<div align="center"><font color="#fff" size="2">第四节</font></div></td></tr>
+							<tr>
+							  <td>
+								<table>
+								  <tbody>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit41 = 0;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" checked name="band1">黑</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit41 = 1;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">褐</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit41 = 2;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">红</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit41 = 3;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">橙</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit41 = 4;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">黄</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit41 = 5;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">绿</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit41 = 6;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">蓝</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit41 = 7;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">紫</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit41 = 8;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">灰</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit41 = 9;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">白</font></td></tr></tbody></table></td>
+							  <td>
+								<table>
+								  <tbody>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit42 = 0;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" checked name="band2">黑</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit42 = 1;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">褐</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit42 = 2;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">红</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit42 = 3;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">橙</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit42 = 4;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">黄</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit42 = 5;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">绿</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit42 = 6;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">蓝</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit42 = 7;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">紫</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit42 = 8;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">灰</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit42 = 9;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">白</font></td></tr></tbody></table></td>
+							  <td>
+								<table>
+								  <tbody>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit43 = 0;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" checked name="band3">黑</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit43 = 1;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">褐</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit43 = 2;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">红</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit43 = 3;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">橙</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit43 = 4;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">黄</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit43 = 5;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">绿</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit43 = 6;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">蓝</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit43 = 7;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">紫</font></td></tr>  
+                                  <tr>
+                                     <td><font color="#fff" size="2"><input 
+									  onclick="digit43 = - 1;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">金</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit43 = - 2;computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">银</font></td></tr>
+                                      </tbody></table></td>
+                                      
+							  <td>
+								<table>
+								  <tbody>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit44 = '±1%';computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" checked name="band4">棕</font></td></tr>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit44 = '±2%';computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">红</font></td></tr>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit44 = '±0.5%';computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">绿</font></td></tr>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit44 = '±0.2%';computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">蓝</font></td></tr>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit44 = '±0.10%';computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">紫</font></td></tr>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit44 = '±0.05%';computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">灰</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit44 = '± 5%';computeform4(this.form)" 
+									  type="radio" style="cursor:pointer"  name="band4">金</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit44 = '±10%';computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">银</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit44 = '±20%';computeform4(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">无</font></td></tr>
+                                      </tbody>
+                                      </table>
+                                      </td>
+                            </tr></tbody></table></td>
+						
+                        <td>
+						  <center>
+						  <table border="2" bordercolor="#FFFFFF">
+							<tbody>
+							<tr>
+							  <td>
+								<p align="center"><font color="#fff" size="3">电阻值 <input size="12 "
+								name="resval" style="text-align:center" ></font> 
+								<p align="center"><font color="#fff" size="3">误&nbsp;差 </font><input size="12 "
+								name="tolval" style="text-align:center"> </p></p></td></tr></tbody></table></center>
+                                <br><br>
+						  <center>
+						  <table border="1" bordercolor="#FFFCFC" style="border-radius:8px; width:60px; height:35px">
+							<tbody>
+							<tr>
+							  <td><input style="font-size: 15px; color: #fff; background-color:rgba(36,152,236,0.80); border-radius:6px; cursor:pointer;width:55px; height:30px; line-height:27px" onclick="clearform4(this.form)" type="reset" value="RST"> 
+							  </td></tr></tbody></table></center>
+                              <br><br>
+						  </td></tr></tbody></table></center></div></form>
+               </div>
+
+
+
+
+
+<div id="shdz2" style="display:none">
+<form method="post">
+					<div align="center">
+					<center>
+					<table bordercolor="#fff" cellSpacing="10" border="1">
+					  <tbody>
+					  <tr>
+						<td>
+						  <table cellpadding="10" border="2" bordercolor="#FFFFFF">
+							<tbody>
+							<tr>
+							  <td>
+								<div align="center"><font color="#fff" size="2">第一节</font></div></td>
+							  <td>
+								<div align="center"><font color="#fff" size="2">第二节</font></div></td>
+							  <td>
+								<div align="center"><font color="#fff" size="2">第三节</font></div></td>
+							  <td>
+								<div align="center"><font color="#fff" size="2">第四节</font></div></td>
+                              <td>
+								<div align="center"><font color="#fff" size="2">第五节</font></div></td></tr>
+                                
+							<tr>
+							  <td>
+								<table>
+								  <tbody>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit51 = 0;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" checked name="band1">黑</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit51 = 1;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">褐</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit51 = 2;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">红</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit51 = 3;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">橙</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit51 = 4;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">黄</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit51 = 5;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">绿</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit51 = 6;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">蓝</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit51 = 7;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">紫</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit51 = 8;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">灰</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit51 = 9;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band1">白</font></td></tr></tbody></table></td>
+							  <td>
+								<table>
+								  <tbody>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit52 = 0;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" checked name="band2">黑</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit52 = 1;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">褐</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit52 = 2;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">红</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit52 = 3;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">橙</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit52 = 4;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">黄</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit52 = 5;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">绿</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit52 = 6;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">蓝</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit52 = 7;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">紫</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit52 = 8;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">灰</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit52 = 9;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band2">白</font></td></tr></tbody></table></td>
+                                      <td>
+								<table>
+								  <tbody>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit53 = 0;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" checked name="band3">黑</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit53 = 1;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">褐</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit53 = 2;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">红</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit53 = 3;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">橙</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit53 = 4;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">黄</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit53 = 5;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">绿</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit53 = 6;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">蓝</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit53 = 7;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">紫</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit53 = 8;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">灰</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit53 = 9;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band3">白</font></td></tr></tbody></table></td>
+                                      
+							  <td>
+								<table>
+								  <tbody>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit54 = 0;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" checked name="band4">黑</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit54 = 1;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">褐</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit54 = 2;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">红</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit54 = 3;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">橙</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit54 = 4;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">黄</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit54 = 5;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">绿</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit54 = 6;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">蓝</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit54 = 7;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">紫</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit54 = - 1;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">金</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit54 = - 2;computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band4">银</font></td></tr></tbody></table></td>
+                                      
+							  <td>
+								<table>
+								  <tbody>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit55 = '±1%';computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" checked name="band5">棕</font></td></tr>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit55 = '±2%';computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band5">红</font></td></tr>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit55 = '±0.5%';computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band5">绿</font></td></tr>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit55 = '±0.2%';computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band5">蓝</font></td></tr>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit55 = '±0.10%';computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band5">紫</font></td></tr>
+                                  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit55 = '±0.05%';computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band5">灰</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit55 = '± 5%';computeform5(this.form)" 
+									  type="radio" style="cursor:pointer"  name="band5">金</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit55 = '±10%';computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band5">银</font></td></tr>
+								  <tr>
+									<td><font color="#fff" size="2"><input 
+									  onclick="digit55 = '±20%';computeform5(this.form)" 
+									  type="radio" style="cursor:pointer" name="band5">无</font></td></tr>
+                                      </tbody>
+                                      </table>
+                                      </td>
+                            </tr></tbody></table></td>
+						
+                        <td>
+						  <center>
+						  <table border="2" bordercolor="#FFFFFF">
+							<tbody>
+							<tr>
+							  <td>
+								<p align="center"><font color="#fff" size="3">电阻值 <input size="12 "
+								name="resval" style="text-align:center" ></font> 
+								<p align="center"><font color="#fff" size="3">误&nbsp;差 </font><input size="12 "
+								name="tolval" style="text-align:center"> </p></p></td></tr></tbody></table></center>
+                                <br><br>
+						  <center>
+						  <table border="1" bordercolor="#FFFCFC" style="border-radius:8px; width:60px; height:35px">
+							<tbody>
+							<tr>
+							  <td><input style="font-size: 15px; color: #fff; background-color:rgba(36,152,236,0.80); border-radius:6px; cursor:pointer;width:55px; height:30px; line-height:27px" onclick="clearform5(this.form)" type="reset" value="RST"> 
+							  </td></tr></tbody></table></center>
+                              <br><br>
+						  </td></tr></tbody></table></center></div></form>
+                          
+                          
+                          
+                          </div>
+                          
+                          
+</div>
+<div style="width:100%; height:100px; background-color:rgba(124,124,124,1.00); margin-top:200px; line-height:30px; color:rgba(225,225,225,1.00); text-align:center; padding-top:20px">版权所有 <br />By 嘉墀、酥胸、钟姑娘、罗克、孙头</div>
+</body>
+</html>
+
+
+
+

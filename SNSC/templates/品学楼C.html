@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+
+<!-- saved from url=(0075)file:///C:/Users/Administrator/Desktop/demo/eftales.pythonanywhere.com.html -->
+
+<html>
+<title>
+	品学楼C区
+</title>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="ajax方式">
+    <script src="http://120.79.158.231:8080/static/javascript/jquery.min.js"></script>
+    <script type="text/javascript">
+        function GetNum() {
+            $.ajax({
+            //几个参数需要注意一下
+                type: "GET",//方法类型
+                dataType: "JSON",//预期服务器返回的数据类型
+                url: "http://120.79.158.231:8080/SNSC/GetNumfromClassID/" ,//url
+                data: {"classroom_id":$("#classroom_id").val(),"building_id":$("#building_id").val()},
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.resultCode == 200) {
+                        alert('当前教室人数为 ' + result.Num + ' 人');
+                    }
+                    ;
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        }
+    </script>
+		<style type="text/css">
+			html,body{
+				height: 100%;
+			}
+			body{
+				/*display: flex;
+				justify-content: center;
+				align-items: center;*/
+				display: grid;
+				background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548587562104&di=f54601676cd4c63fc2c913442c27441b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F014657554115aa000001e71bb559b2.jpg%401280w_1l_2o_100sh.jpg) no-repeat center/cover;
+			}
+
+			.login{
+				margin-bottom: 0px;
+				margin-top: 0px;
+				margin-left: auto;
+				margin-right: auto;
+				width: 300px;
+				height: 300px;
+				background-color: rgba(255,250,205,0.7);
+				border-radius: 8px;/*圆角属性 顺时针*/
+
+			}
+			.login:before{/*伪元素*/
+				content: '';
+				display: block;
+				width: 100%;
+				height: 10px;
+				background-image: -webkit-linear-gradient(left,#27ae60 0%,#27ae60 20%,#8e44ad 20%,#8e44ad 40%,#3498d8 40%,#3498d8 60%,#e74c3c 60%,#e74c3c 80%,#f1c40f 80%,#f1c40f 100%);
+				border-radius: 6px 6px 0 0;
+
+			}
+			.title{
+				line-height: 80px;
+				text-align: center;
+				color: #096;
+				font-size: 2em;
+			}
+			.login-content{
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;/*等比环绕*/
+				height: 150px;
+				align-items: center;/*垂直轴*/
+			}
+			.login-content input{
+				width: 80%;
+				height: 40px;
+				border: 1px solid #bbb;
+				border-radius: 6px;
+				outline: none;
+				text-align: center;
+			}
+			.question{
+				line-height: 40px;
+				text-align: center;
+				color: #096;
+				font-size: 1em;
+			}
+			.login-content input[type='submit']{
+				border-color: #096;
+				color: #096;
+			}
+			.test-box{width:300px;height:60px;margin:0px auto;position:relative;}
+            .test-box img{position:relative;border:0;margin: 0px;}
+		</style>
+
+	</head>
+
+	<body>
+		<script>
+			document.write(Date());
+		</script>
+		<div class="test-box">
+			<img src="https://www.uestc.edu.cn/images/logo.png">
+		</div>
+		<div class="login">
+			<h2 class="title">欢迎来到品学楼C区</h2>
+			<form id="form1" action="http://120.79.158.231:8080/SNSC/GetNumfromClassID/" class="login-content" method="get">
+				<div class="question">
+					你想去哪个教室看看呢？
+				</div>
+				<br>
+				 <input type="text" id="classroom_id" required="required" pattern="[0-9]{3}" placeholder="请输入三位数字的教室号" >
+				 <br>
+				 <input type="button" id="building_id" onclick="GetNum()"  value="查询品学楼C区的信息" align="center" >
+			</form>
+		</div>
+
+	</body>
+</html>

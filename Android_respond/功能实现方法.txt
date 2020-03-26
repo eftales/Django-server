@@ -1,0 +1,32 @@
+http://192.168.1.20:8000/Android/<str:Appneeds>
+
+共有步骤：
+	解析<str: Appneeds>,返回case值和其他元素：
+
+
+def Analysis(Appneeds):
+    case_num = Appneeds[0:4]
+    message = Appneeds[4:-1]
+    max_len = len(message)
+
+    s_location = 0
+    e_location = 0
+    s_message = []
+    while e_location < max_len:
+        if (message[e_location] == ':'):
+            s_message.append(message[s_location + 1:e_location])
+            s_location = e_location
+        e_location += 1
+    s_message.pop(0)
+    return [case_num, s_message]
+
+主函数：
+def Android_needs_response(request,Appneeds):
+	result = Analysis(Appneeds)
+	case_num = result[0]
+	message = result[1]
+	case case_num:
+	
+#注册逻辑实现方法：2001
+
+	

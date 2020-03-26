@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<!-- -->
+
+<html>
+<title>
+	欢迎来到电子科技大学
+</title>
+	<head>
+		<meta charset="UTF-8">
+		<title>样本1</title>
+		<style type="text/css">
+			.nav{
+				margin: auto;
+				width:450px;
+				height: 300px;
+				position: relative;
+				top: 100px;
+			}
+			.tab1,.tab2,.tab3{
+				width: 150px;
+				height: 150px;
+				color:#ffffff;
+				font-weight: bold;
+				text-align: center;
+				line-height: 150px;
+			}
+			.tab3{
+				position: relative;
+				left: 150px;
+				background-color: #ef476f;
+				transition: all 0.5s;
+			}
+			.tab1{
+				position: relative;
+				left: 75px;
+				background-color: #06d6a0;
+				transition: all 0.5s;
+			}
+			.tab2{
+				position: relative;
+				left: 225px;
+				bottom: 150px;
+				background-color: #1b9aaa;
+				transition: all 0.5s;
+			}
+
+			div.tab1:hover{
+				width: 600px;
+				height: 300px;
+			}
+			div.tab2:hover{
+				width: 600px;
+				height: 300px;
+			}
+			div.tab3:hover{
+				width: 600px;
+				height: 300px;
+			}
+			BODY{
+				display: grid;
+				background-image: url(http://120.79.158.231:8080/static/images/timg.jpg);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: 100% 100%;
+			}
+			.xiaohui{
+				position: relative;
+				left: 150px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img class="xiaohui"  src="https://www.uestc.edu.cn/images/logo.png">
+		<div class="nav">
+			<div class="tab">
+				<div class="tab3" onclick="window.open('品学楼C.html')">品学楼C</div>
+				<div class="tab1" onclick="window.open('品学楼A.html')">品学楼A</div>
+				<div class="tab2" onclick="window.open('品学楼B.html')">品学楼B</div>
+
+			</div>
+			<div class="content"></div>
+		</div>
+
+	</body>
+</html>

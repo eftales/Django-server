@@ -1,0 +1,3 @@
+tensorflow
+django-cors-headers
+numpy

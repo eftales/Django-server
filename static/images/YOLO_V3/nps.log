@@ -1,0 +1,40 @@
+2020/02/05 22:11:51.560 [I] [nps.go:64]  the version of server is 0.23.2 ,allow client version to be 0.21.0
+2020/02/05 22:11:51.571 [I] [server.go:191]  tunnel task ubuntu_vbox start mode：tcp port 2211
+2020/02/05 22:11:51.571 [I] [server.go:191]  tunnel task raspberry start mode：tcp port 2212
+2020/02/05 22:11:51.571 [I] [server.go:191]  tunnel task  start mode：httpHostServer port 0
+2020/02/05 22:11:51.571 [I] [connection.go:71]  web management start, access port is 9090
+2020/02/05 22:11:51.579 [I] [connection.go:36]  server start, the bridge type is tcp, the bridge port is 8024
+2020/02/05 22:11:51.600 [I] [connection.go:62]  start https listener, port is 4443
+2020/02/05 22:11:51.600 [I] [connection.go:53]  start http listener, port is 88
+2020/02/05 22:13:16.948 [I] [nps.go:64]  the version of server is 0.23.2 ,allow client version to be 0.21.0
+2020/02/05 22:13:16.956 [I] [connection.go:36]  server start, the bridge type is tcp, the bridge port is 8024
+2020/02/05 22:13:16.977 [I] [server.go:191]  tunnel task ubuntu_vbox start mode：tcp port 2211
+2020/02/05 22:13:16.977 [I] [server.go:191]  tunnel task raspberry start mode：tcp port 2212
+2020/02/05 22:13:16.979 [I] [server.go:191]  tunnel task  start mode：httpHostServer port 0
+2020/02/05 22:13:16.979 [I] [connection.go:71]  web management start, access port is 9090
+2020/02/05 22:13:17.014 [I] [connection.go:62]  start https listener, port is 4443
+2020/02/05 22:13:17.044 [I] [connection.go:53]  start http listener, port is 88
+2020/02/05 22:14:18.477 [I] [nps.go:64]  the version of server is 0.23.2 ,allow client version to be 0.21.0
+2020/02/05 22:14:18.488 [I] [server.go:191]  tunnel task ubuntu_vbox start mode：tcp port 2211
+2020/02/05 22:14:18.488 [I] [server.go:191]  tunnel task raspberry start mode：tcp port 2212
+2020/02/05 22:14:18.488 [I] [server.go:191]  tunnel task  start mode：httpHostServer port 0
+2020/02/05 22:14:18.488 [I] [connection.go:71]  web management start, access port is 9090
+2020/02/05 22:14:18.497 [I] [connection.go:36]  server start, the bridge type is tcp, the bridge port is 8024
+2020/02/05 22:14:18.510 [I] [connection.go:62]  start https listener, port is 4443
+2020/02/05 22:14:18.510 [I] [connection.go:53]  start http listener, port is 88
+2020/02/05 22:18:37.705 [I] [nps.go:64]  the version of server is 0.23.2 ,allow client version to be 0.21.0
+2020/02/05 22:18:37.713 [I] [server.go:191]  tunnel task ubuntu_vbox start mode：tcp port 2211
+2020/02/05 22:18:37.713 [I] [server.go:191]  tunnel task raspberry start mode：tcp port 2212
+2020/02/05 22:18:37.713 [I] [server.go:191]  tunnel task  start mode：httpHostServer port 0
+2020/02/05 22:18:37.713 [I] [connection.go:71]  web management start, access port is 9090
+2020/02/05 22:18:37.716 [I] [connection.go:36]  server start, the bridge type is tcp, the bridge port is 8024
+2020/02/05 22:18:37.722 [I] [connection.go:62]  start https listener, port is 4443
+2020/02/05 22:18:37.722 [I] [connection.go:53]  start http listener, port is 88
+2020/02/05 22:26:05.936 [I] [nps.go:64]  the version of server is 0.23.2 ,allow client version to be 0.21.0
+2020/02/05 22:26:05.948 [I] [server.go:191]  tunnel task raspberry start mode：tcp port 2212
+2020/02/05 22:26:05.948 [I] [server.go:191]  tunnel task ubuntu_vbox start mode：tcp port 2211
+2020/02/05 22:26:05.948 [I] [server.go:191]  tunnel task  start mode：httpHostServer port 0
+2020/02/05 22:26:05.948 [I] [connection.go:71]  web management start, access port is 9090
+2020/02/05 22:26:05.953 [I] [connection.go:36]  server start, the bridge type is tcp, the bridge port is 8024
+2020/02/05 22:26:05.960 [I] [connection.go:62]  start https listener, port is 4443
+2020/02/05 22:26:05.960 [I] [connection.go:53]  start http listener, port is 88

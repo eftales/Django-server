@@ -1,0 +1,29 @@
+APP并不是指安卓应用
+而是指Django的模板
+
+创建流程
+创建APP（的数据存储文件）：
+	1.创建一个名为name的空app
+	在dos里面输入： python manage.py startapp name
+	2.用IDEL打开空app文件夹里面的 models.py
+	创建类 名为name（与app名保持一致），继承关系models.Model
+	方法有：title、content等，自定义足量的方法。自定义为其数据库存储类型
+		其中 models.CharField(max_length=N)为字符字段，有长度限制
+		models.TextField()文本字段，无长度限制
+建立django与APP的联系
+1.修改配置文件	mysite->settings.py IDEL打开
+	在INSTALED_APP列表中加入自定义的APP的名称（字符串类型）
+修改配置文件 app->admin.py 注册APP
+2.dos下输入 python manage.py makemigrations
+	在app文件夹下生成迁移文件
+3.dos下输入 python manage.py migrate
+	此时APP与Django建立起了连接
+注：2，3两条命令也用于修改模型、自定义admin后，数据库的更新
+
+4.将app与数据库关联
+打开admin.py 填写相关数据
+
+检验是否成功：
+dos下输入 python manage.py runsever
+打开 localhost:8000/admin
+

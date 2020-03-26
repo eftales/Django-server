@@ -1,0 +1,4 @@
+from XXX import XXX 引入一个对象；其中from XXX是相对路径，所以应该在当前文件夹的子路径里面，import XXX是引入的文件名。用.表示当前路径，.XXX就是当前路径的子路径
+
+
+
